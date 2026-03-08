@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ disease.name }} - Plant Health Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('{{ url_for('static', filename="bg1.jpg") }}') center/cover no-repeat;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 50px;
+      background: rgba(46, 125, 50, 0.8);
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    .content {
+      max-width: 900px;
+      margin: 100px auto 50px;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 15px;
+      text-align: center;
+    }
+    .content img {
+      width: 300px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .info {
+      text-align: left;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('diseases') }}">Diseases</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+
+  <div class="content">
+    <h1>{{ disease.name }}</h1>
+    <img src="{{ url_for('static', filename=disease.image) }}" alt="{{ disease.name }}">
+    <div class="info">
+      <p><strong>Symptoms:</strong> {{ disease.symptoms }}</p>
+      <p><strong>Cause:</strong> {{ disease.cause }}</p>
+      <p><strong>Cure:</strong> {{ disease.cure }}</p>
+    </div>
+  </div>
+</body>
+</html>

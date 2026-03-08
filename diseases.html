@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Diseases - Plant Health Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('{{ url_for('static', filename="bg1.jpg") }}') center/cover no-repeat;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 50px;
+      background: rgba(46, 125, 50, 0.8);
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    .content {
+      max-width: 1000px;
+      margin: 100px auto 50px;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 15px;
+    }
+    .disease-card {
+      background: #d5f5e3;
+      color: #333;
+      padding: 20px;
+      margin: 15px;
+      border-radius: 15px;
+      display: inline-block;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      vertical-align: top;
+    }
+    .disease-card img {
+      width: 200px;
+      height: 150px;
+      border-radius: 10px;
+    }
+    .disease-card a {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('diseases') }}">Diseases</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+
+  <div class="content">
+    <h1>Plant Diseases</h1>
+    {% for key, disease in disease_list.items() %}
+      <div class="disease-card">
+        <img src="{{ url_for('static', filename=disease['image']) }}" alt="{{ disease.name }}">
+
+        <h3>{{ disease.name }}</h3>
+        <a href="{{ url_for('disease_detail', name=key) }}">View Details</a>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

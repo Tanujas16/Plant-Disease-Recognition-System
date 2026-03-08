@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About - Plant Health Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('{{ url_for('static', filename="bg1.jpg") }}') center/cover no-repeat;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 50px;
+      background: rgba(46, 125, 50, 0.8);
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    .content {
+      max-width: 900px;
+      margin: 100px auto 50px;
+      padding: 30px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 15px;
+    }
+    h1 {
+      text-align: center;
+      color: yellow;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: white;
+    }
+    .company-info {
+      background:black(255, 255, 255, 0.9);
+      color: #333;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    .company-info p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('diseases') }}">Diseases</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+
+  <div class="content">
+    <h1>About Plant Health Checker Pvt. Ltd.</h1>
+    <p>
+      Plant Health Checker Pvt. Ltd. is a pioneering organization dedicated to leveraging technology to improve plant health and agricultural productivity. 
+      Our mission is to provide accurate, accessible, and easy-to-use plant disease recognition tools that help farmers, gardeners, and agricultural professionals maintain healthy crops and prevent losses due to plant diseases.
+    </p>
+    <p>
+      Using advanced machine learning and image recognition technology, our platform allows users to identify plant diseases quickly and receive recommendations for treatment and prevention. 
+      We believe in empowering the agricultural community with innovative solutions to enhance food security and promote sustainable farming practices.
+    </p>
+    
+    <div class="company-info">
+      <h2>Contact Information</h2>
+      <p><strong>Company Name:</strong> Plant Health Checker Pvt. Ltd.</p>
+      <p><strong>Email:</strong> support@planthealth.com</p>
+      <p><strong>Contact No:</strong> +91 9876543210</p>
+      <p><strong>Address:</strong> Plant Health Tower, 123 Greenway Road, Horticulture Park, Nagpur, Maharashtra, India - 440001</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plant Disease Recognition System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url({{ url_for('static', filename='bg1.jpg') }})  center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    .upload-box {
+      background: white;
+      padding: 70px 60px;   /* Increased padding */
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      text-align: center;
+      max-width: 700px;     /* Increased box size */
+      width: 100%;
+      transition: all 0.3s ease-in-out;
+    }
+    h2 {
+      font-weight: bold;
+      color: #2d6a4f;
+      font-size: 2.8rem;    /* Bigger heading */
+      margin-bottom: 25px;
+    }
+    p.text-muted {
+      font-size: 1.4rem;    /* Bigger paragraph text */
+      color: #333;
+      margin-bottom: 35px;
+    }
+    .form-control {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      padding: 14px;
+      width: 100%;
+    }
+    .btn-custom {
+      background-color: #2d6a4f;
+      color: white;
+      border-radius: 12px;
+      padding: 18px 35px;   /* Larger button */
+      font-size: 1.4rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+    }
+    .btn-custom:hover {
+      background-color: #1b4332;
+      transform: scale(1.05);
+    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .upload-box {
+        padding: 45px 25px;
+        max-width: 95%;
+      }
+      h2 { font-size: 2.2rem; }
+      p.text-muted { font-size: 1.2rem; }
+      .btn-custom { padding: 15px 25px; font-size: 1.2rem; }
+    }
+    @media (max-width: 400px) {
+      h2 { font-size: 1.9rem; }
+      p.text-muted { font-size: 1.1rem; }
+      .btn-custom { padding: 13px 22px; font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-box">
+    <h2>🌿 Plant Disease Recognition System</h2>
+    <p class="text-muted">Upload a leaf image to detect disease, cause, and cure.</p>
+    <form action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" class="form-control" required>
+      <button type="submit" class="btn-custom">🔍 Predict</button>
+    </form>
+  </div>
+  
+</body>
+</html>

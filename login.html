@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Plant Health Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('{{ url_for('static', filename="bg1.jpg") }}') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    /* Top-right navigation box */
+    .top-nav {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: rgba(46, 125, 50, 0.85);
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: flex;
+      gap: 15px;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Login box */
+    .login-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 800px;
+      z-index: 1;
+    }
+
+    input[type=text], input[type=password] {
+      width: 60%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    input[type=submit] {
+      padding: 10px 20px;
+      border: none;
+      background: #2e7d32;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    input[type=submit]:hover {
+      background: #256428;
+    }
+
+    .password-toggle {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .error {
+      color: red;
+      margin-top: 15px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 0.6s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top-right navigation -->
+  <div class="top-nav">
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+  </div>
+
+  <!-- Login Box -->
+  <div class="login-box">
+    <h1 style="color: #2e7d32;"><i>🌱 WELCOME TO PLANT DISEASE RECOGNITION SYSTEM</i></h1>
+    <h2>👤 Login</h2>
+
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required><br>
+      
+      <input type="password" id="password" name="password" placeholder="Password" required><br>
+      
+      <div class="password-toggle">
+        <input type="checkbox" id="togglePassword">
+        <label for="togglePassword">Show Password</label>
+      </div>
+
+
+      <br>
+      <br>
+
+      <input type="submit" value="Login">
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+  </div>
+
+  <script>
+    // 👁 Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('change', function() {
+      const passwordField = document.getElementById('password');
+      passwordField.type = this.checked ? 'text' : 'password';
+    });
+  </script>
+</body>
+</html>

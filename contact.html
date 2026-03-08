@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - Plant Health Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('{{ url_for('static', filename="bg1.jpg") }}') center/cover no-repeat;
+      color: #fff;
+    }
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 50px;
+      background: rgba(46, 125, 50, 0.8);
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    .content {
+      max-width: 900px;
+      margin: 100px auto 50px;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 15px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    form input[type=submit] {
+      background: #f4d03f;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('about') }}">About</a>
+    <a href="{{ url_for('diseases') }}">Diseases</a>
+    <a href="{{ url_for('contact') }}">Contact</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+<div class="content">
+  <h1>Contact Us</h1>
+
+  <!-- Success message -->
+  {% if success %}
+    <p style="color: #2e7d32; font-weight: bold; font-size: 18px; text-align: center;">
+      {{ success }}
+    </p>
+  {% endif %}
+
+  <!-- Company info -->
+  <div style="background: rgba(255,255,255,0.9); padding: 15px; border-radius: 10px; margin-bottom: 20px; color: #333;">
+    <p><strong>Company Name:</strong> {{ company.name }}</p>
+    <p><strong>Email:</strong> {{ company.email }}</p>
+    <p><strong>Contact No:</strong> {{ company.contact }}</p>
+    <p><strong>Address:</strong> {{ company.address }}</p>
+  </div>
+
+  <!-- Contact form -->
+  <form method="post">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <input type="submit" value="Send Message">
+  </form>
+</div>
+
+
+</body>
+</html>
